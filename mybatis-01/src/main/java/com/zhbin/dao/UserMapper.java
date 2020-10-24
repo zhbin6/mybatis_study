@@ -5,5 +5,9 @@ import com.zhbin.pojo.User;
 import java.util.List;
 
 public interface UserMapper {
-    List<User> getUserList();
+    public List<User> getUserList();
+    public User getUserById(int id);
+    public int insertUser(User user);
+    public int updateUser(User user);
+    public int deleteUser(int id);
 }

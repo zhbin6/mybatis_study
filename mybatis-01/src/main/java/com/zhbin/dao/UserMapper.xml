@@ -4,7 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.zhbin.dao.UserMapper">
+    <!--对象中的属性可以直接取出来，比如对象中有name可以直接#{name}
+    ，但是必须要保证#{xxx}和对象中的属性xxx相同名字-->
+    <!--增删改需要添加事务-->
+    <insert id="insertUser" parameterType="com.zhbin.pojo.User">
+        insert into user(name,age) values (#{name},#{age});
+    </insert>
+    <update id="updateUser" parameterType="com.zhbin.pojo.User">
+        update user set name = #{name}, age = #{age} where id = #{id};
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id = #{id};
+    </delete>
     <select id="getUserList"  resultType="com.zhbin.pojo.User">
         select * from user;
     </select>
+    <select id="getUserById" parameterType="int" resultType="com.zhbin.pojo.User">
+        select * from user where id = #{id};
+    </select>
+
 </mapper>
