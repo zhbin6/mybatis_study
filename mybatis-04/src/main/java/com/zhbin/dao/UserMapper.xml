@@ -12,6 +12,7 @@
 <!--    </select>-->
 
 
+
     <resultMap id="UserMap" type="user">
 <!--        用resultMap可以实现数据库字段和当前类字段名字不一致时的改动-->
 <!--        column数据库中的字段，property实体类属性-->
@@ -22,5 +23,10 @@
     <select id="getUserById" parameterType="int" resultMap="UserMap">
         select * from user where id = #{id};
     </select>
+
+    <select id="getUserByLimit" parameterType="map" resultMap="UserMap">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
 
 </mapper>
