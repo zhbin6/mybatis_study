@@ -1,0 +1,9 @@
+学习了在mybatis框架下的模糊查询，以及修改配置文件，主要是简化了路径
+可以用
+<!--    起别名-->
+    <typeAliases>
+<!--第一种方式        <typeAlias type="com.zhbin.pojo.User" alias="User"/>-->
+<!--第二种方式        默认是类名小写-->
+        <package name="com.zhbin.pojo"/>
+<!--第三种方式，注解@Alias        -->
+    </typeAliases>

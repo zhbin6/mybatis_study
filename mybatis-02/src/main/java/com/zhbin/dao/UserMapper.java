@@ -11,7 +11,4 @@ public interface UserMapper {
     public int insertUser(User user);
     public int updateUser(User user);
     public int deleteUser(int id);
-    public int insertUserByMap(Map<String,Object> map);
-    public int updateUserByMap(Map<String,Object> map);
-    public List<User> getUserLike(String value);
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<!--mybatis的默认事务管理器是JDBC，默认的数据源是POOLED-->
+<configuration>
+
+    <!--引入外部配置文件-->
+    <properties resource="db.properties">
+<!--        可以在其中也增加配置文件内容，但是外部的优先权更优-->
+<!--        <property name="" value=""/>-->
+    </properties>
+
+<!--    起别名-->
+    <typeAliases>
+<!--第一种方式        <typeAlias type="com.zhbin.pojo.User" alias="User"/>-->
+<!--第二种方式        默认是类名小写-->
+        <package name="com.zhbin.pojo"/>
+<!--第三种方式，注解@Alias        -->
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--   每一个Mapper.xml都需要在mybatis核心文件中配置-->
+    <mappers>
+        <mapper resource="com/zhbin/dao/UserMapper.xml"></mapper>
+    </mappers>
+</configuration>

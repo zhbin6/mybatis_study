@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhbin.dao.UserMapper">
+    <!--对象中的属性可以直接取出来，比如对象中有name可以直接#{name}
+    ，但是必须要保证#{xxx}和对象中的属性xxx相同名字-->
+    <!--增删改需要添加事务-->
+<!--    <select id="getUserById" parameterType="int" resultType="user">-->
+<!--        select * from user where id = #{id};-->
+<!--    </select>-->
+
+
+    <resultMap id="UserMap" type="user">
+<!--        用resultMap可以实现数据库字段和当前类字段名字不一致时的改动-->
+<!--        column数据库中的字段，property实体类属性-->
+<!--        <result column="id" property="id"/>-->
+        <result column="name" property="userName"/>
+<!--        <result column="age" property="age"/>-->
+    </resultMap>
+    <select id="getUserById" parameterType="int" resultMap="UserMap">
+        select * from user where id = #{id};
+    </select>
+
+</mapper>

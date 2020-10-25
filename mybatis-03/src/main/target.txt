@@ -1,0 +1,2 @@
+学习了使用resultMap来实现数据库字段名（column）和实体类属性（property）
+不同情况下如何匹配。

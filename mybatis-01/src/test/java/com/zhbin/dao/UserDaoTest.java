@@ -5,8 +5,10 @@ import com.zhbin.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import java.io.IOException;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserDaoTest {
     @Test
@@ -83,4 +85,56 @@ public class UserDaoTest {
             sqlSession.close();
         }
     }
+
+    @Test
+    public void insertUserByMap(){
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = MybatisUtil.getSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("userName","不知道");
+            map.put("userAge",0);
+            int res = userMapper.insertUserByMap(map);
+            if(res > 0)
+                System.out.println("insert succed");
+            sqlSession.commit();
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void updateUserByMap(){
+        SqlSession sqlSession = null;
+        try{
+            sqlSession = MybatisUtil.getSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("name","zhbin");
+            map.put("id",8);
+            int res = userMapper.updateUserByMap(map);
+            if(res > 0)
+                System.out.println("update succed");
+            sqlSession.commit();;
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void getUserByLike(){
+        SqlSession sqlSession = null;
+        try{
+            sqlSession = MybatisUtil.getSqlSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<User> users = userMapper.getUserLike("刘");
+            for (User user : users) {
+                System.out.println(user);
+            }
+        }finally {
+            sqlSession.close();
+        }
+    }
+
 }

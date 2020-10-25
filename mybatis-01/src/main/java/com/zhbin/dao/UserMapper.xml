@@ -22,5 +22,14 @@
     <select id="getUserById" parameterType="int" resultType="com.zhbin.pojo.User">
         select * from user where id = #{id};
     </select>
+    <insert id="insertUserByMap" parameterType="map">
+        insert into user(name,age) values (#{userName},#{userAge});
+    </insert>
+    <update id="updateUserByMap" parameterType="map">
+        update user set name = #{name} where id = #{id};
+    </update>
+    <select id="getUserLike" resultType="com.zhbin.pojo.User">
+        select * from user where name like "%"#{value}"%";
+    </select>
 
 </mapper>
