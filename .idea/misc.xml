@@ -10,6 +10,10 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/mybatis-01-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-06/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-08-01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-08-02/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-08/pom.xml" />
       </set>
     </option>
   </component>
